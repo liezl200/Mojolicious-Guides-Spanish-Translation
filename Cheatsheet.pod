@@ -1,13 +1,13 @@
 
-=head1 NAME
+=head1 NOMBRE
 
 Mojolicious::Guides::Cheatsheet - Reference
 
-=head1 OVERVIEW
+=head1 RESUMEN
 
 Este documento contiene un referencia concisa y para todo uso.
 
-=head1 RESERVED STASH VALUES
+=head1 VALORES DE STASH RESERVADOS
 
 Además de todo lo que contenga el prefijo,  C<mojo.>, hay algunos valores del stash que 
 son reservado para las rutas y el renderizador.
@@ -126,7 +126,7 @@ Renderizar plantilla.
 
 Convertir caracteres en una respuesta.
 
-=head1 ENVIRONMENT VARIABLES
+=head1 VARIABLES DE AMBIENTE
 
 Muchas partes de L<Mojolicious> pueden ser mejoradas con variables de ambiente.
 Las variables depuración de ambiente son excluidos porque son para uso
@@ -311,7 +311,7 @@ un directorio temporal especifico a la plataforma.
 
   MOJO_TMPDIR=/tmp/mojo
 
-=head1 MORE
+=head1 MÁS INFORMACIÓN
 
 Usted puede continuar con L<Mojolicious::Guides> ahora o echar un vistazo a la wiki de Mojolicious
 L<http://github.com/kraih/mojo/wiki>, que contiene una gran cantidad

@@ -1,0 +1,319 @@
+
+=head1 NAME
+
+Mojolicious::Guides::Cheatsheet - Reference
+
+=head1 OVERVIEW
+
+Este documento contiene un referencia concisa y para todo uso.
+
+=head1 RESERVED STASH VALUES
+
+ Además de todo lo que contenga el prefijo,  C<mojo.>, hay algunos "stash values" que 
+son reservado para las rutas y el "renderer".
+
+=head2 C<action>
+
+  $r->route('/welcome')->to(action => 'hello');
+
+Acción para despachar a.
+
+=head2 C<app>
+
+  $r->route('/welcome')->to(app => MyApp->new);
+
+Aplicaciones embebidas para despachar a.
+
+=head2 C<cb>
+
+  $r->route('/welcome')->to(cb => sub {...});
+
+Callback para despachar a.
+
+=head2 C<class>
+
+  $r->route('/welcome')->to(class => 'Greeting');
+
+Alternativa camelizado de C<controller>.
+
+=head2 C<controller>
+
+  $r->route('/welcome')->to(controller => 'greetings');
+
+Controlador para despachar a.
+
+=head2 C<data>
+
+  $self->render(data => 'raw bytes');
+
+Convertir raw bytes en una respuesta.
+
+=head2 C<extends>
+
+  $self->render(extends => 'template');
+
+Plantilla para ampliar.
+
+=head2 C<format>
+
+  $self->render(format => 'rss');
+
+Formato para procesarlo (render).
+
+=head2 C<handler>
+
+  $self->render(handler => 'ep');
+
+"Handler" usado para procesar (rendering).
+
+=head2 C<inline>
+
+  $self->render(inline => '<%= 1 + 1%>');
+
+Plantilla insertada para procesarlo.
+
+=head2 C<json>
+
+  $self->render(json => {foo => 23});
+
+Convertir una estructura de Perl en una respuesta JSON.
+
+=head2 C<layout>
+
+  $self->render(layout => 'green');
+
+Disposición para procesarlo.
+
+=head2 C<method>
+
+  $r->route('/welcome')->to(method => 'hello');
+
+Alternativa de C<action>.
+
+=head2 C<namespace>
+
+  $r->route('/welcome')->to(namespace => 'TestApp', method => 'lulz');
+
+"Namespace" para despachar a.
+
+=head2 C<partial>
+
+  my $result = $self->render(partial => 1);
+
+Devolver resultado de procesar (rendering) en lugar de convertirlo en una respuesta.
+
+=head2 C<path>
+
+  $r->route('/welcome')->to(path => '/test', app => MyApp->new);
+
+"Base path" usado para despachar a aplicaciones embebidas.
+
+=head2 C<status>
+
+  $self->render(status => 404);
+
+"Status code" usado para respuesta procesada.
+
+=head2 C<template>
+
+  $self->render(template => 'bye');
+
+Plantilla para procesarlo.
+
+=head2 C<text>
+
+  $self->render(text => 'Hello World!');
+
+Convertir caracteres en una respuesta.
+
+=head1 ENVIRONMENT VARIABLES
+
+Muchos partes de L<Mojolicious> pueden ser mejoradas con variables de ambiente.
+Variables depuración de ambiente son excluidos porque son para usa del developer 
+solamente.
+
+=head2 C<MOJO_APP>
+
+Decide cual L<Mojolicious> o L<Mojo> aplicación se utilizará, siempre debe
+contenga un nombre de clase como C<MyApp>. Por general, se convierte 
+por defecto a L<Mojo::HelloWorld>.
+
+  MOJO_APP=MyApp
+
+=head2 C<MOJO_CA_FILE>
+
+La ruta al archivo de "TLS CA authority", siempre debe contenga una ruta como C</etc/tls/cacerts.pem>.
+Observa que L<IO::Socket::SSL> debe instalado para soporte del TLS.
+
+  MOJO_CA_FILE=/etc/tls/cacerts.pem
+
+=head2 C<MOJO_CERT_FILE>
+
+La ruta al certificado TLS siempre debe contenga una ruta como
+C</etc/tls/client.crt>.
+Observa que L<IO::Socket::SSL> debe instalado para soporte del TLS.
+
+  MOJO_CERT_FILE=/etc/tls/client.crt
+
+=head2 C<MOJO_CHUNK_SIZE>
+
+Tamaño de chunk usado para operación I/O, en bytes. Un chunk de tamaño más 
+grande se acelera operaciones I/O, pero utilizará más memoria. Se convierte 
+por defecto en C<131072>.
+
+  MOJO_CHUNK_SIZE=1024
+
+=head2 C<MOJO_CONFIG>
+
+Archivo config usado por L<Mojolicious::Plugin::Config> y
+L<Mojolicious::Plugin::JSONConfig>, bastante conveniente para ensayo.
+
+   MOJO_CONFIG=myapp.conf
+
+=head2 C<MOJO_HOME>
+
+Página principal del directorio para el aplicación L<Mojolicious>, siempre debe contenga 
+una ruta como C</home/sri/myapp>.
+
+  MOJO_HOME=/home/sri/myapp
+
+=head2 C<MOJO_IOWATCHER>
+
+Alternativo implementación de L<Mojo::IOWatcher> para internar.
+
+  MOJO_IOWATCHER=Mojo::IOWatcher::EV
+
+=head2 C<MOJO_KEY_FILE>
+
+La ruta a "TLS key", siempre debe contenga una ruta como
+C</etc/tls/client.key>.
+Observa que L<IO::Socket::SSL> debe instalado para soporte del TLS.
+
+  MOJO_KEY_FILE=/etc/tls/client.key
+
+=head2 C<MOJO_LOG_LEVEL>
+
+Log level para el aplicación L<Mojolicious>, siempre debe contenga un log
+level válido como C<debug> o C<error>.
+
+  MOJO_LOG_LEVEL=debug
+  MOJO_LOG_LEVEL=error
+
+=head2 C<MOJO_MAX_LEFTOVER_SIZE>
+
+Máximo tamaño, en bytes, de buffer para "pipelined HTTP requests", se convierte 
+por defecto en C<262144>.
+
+  MOJO_MAX_LEFTOVER_SIZE=2048
+
+=head2 C<MOJO_MAX_LINE_SIZE>
+
+Máximo tamaño de verso para versos de inicio y encabezamientos en un mensaje HTTP
+en bytes, se convierte por defecto en  C<10240>.
+
+  MOJO_MAX_LINE_SIZE=2048
+
+=head2 C<MOJO_MAX_MEMORY_SIZE>
+
+Máximo tamaño, en bytes, de contenido HTTP para mantener en la memoria. Contenido más grande se escribirá
+en archivos temporales, se convierte por defecto en C<262144>.
+
+  MOJO_MAX_MEMORY_SIZE=2048
+
+=head2 C<MOJO_MAX_MESSAGE_SIZE>
+
+Máximo tamaño para mensajes de HTTP, en bytes, se convierte por defecto en C<5242880>.
+
+  MOJO_MAX_MESSAGE_SIZE=1024
+
+=head2 C<MOJO_MAX_REDIRECTS>
+
+  MOJO_MAX_REDIRECTS=3
+
+Máximo tamaño de redirecciones que L<Mojo::UserAgent> seguirá, se convierte por defecto en C<0>.
+
+=head2 C<MOJO_MAX_WEBSOCKET_SIZE>
+
+Máximo tamaño para mensajes de WebSocket, en bytes, se convierte por defecto en C<262144>.
+
+  MOJO_MAX_WEBSOCKET_SIZE=1024
+
+=head2 C<MOJO_MODE>
+
+Modo de ejecución para el L<Mojolicious> aplicación, siempre debe contenga un modo válido como
+C<development> o C<production>.
+
+  MOJO_MODE=development
+  MOJO_MODE=production
+
+=head2 C<MOJO_NO_BONJOUR>
+
+Desactivar el soporte Bonjour.
+Observa que L<Net::Rendezvous::Publish> debe instalado para soporte del Bonjour.
+
+  MOJO_NO_BONJOUR=1
+
+=head2 C<MOJO_NO_DETECT>
+
+Desactivar L<Mojolicious> detección del "deployment environment".
+
+  MOJO_NO_DETECT=1
+
+=head2 C<MOJO_NO_IPV6>
+
+Desactivar soporte de IPv6.
+Observa que L<IO::Socket::IP> debe instalado para soporte del IPv6.
+
+  MOJO_NO_IPV6=1
+
+=head2 C<MOJO_NO_TLS>
+
+Desactivar soporte del TLS, esto podría resultar en un rendimiento que es un poco mejor y
+menor uso de memoria.
+Observa que L<IO::Socket::SSL> debe instalado para soporte del TLS.
+
+  MOJO_NO_TLS=1
+
+=head2 C<MOJO_PROXY>
+
+Activar la HTTP y HTTPS proxy detección automática en L<Mojo::UserAgent>, para
+razones de seguridad está desactivado por defecto.
+
+  MOJO_PROXY=1
+
+=head2 C<MOJO_REVERSE_PROXY>
+
+Habilitar el soporte de proxy inverso para su aplicación L<Mojolicious>.
+Esto permite L<Mojolicious> recoger por defecto el C<X-Forwarded-For>,
+C<X-Forwarded-Host> y C<X-Forwarded-HTTPS> cabeceras.
+
+  MOJO_REVERSE_PROXY=1
+
+=head2 C<MOJO_STATIC_CLASS>
+
+La clase que el L<Mojolicious> "static file dispatcher" siempre debe usar para encontrar C<DATA>
+templates, se convierte por defecto en C<main>.
+
+  MOJO_STATIC_CLASS=MyApp
+
+=head2 C<MOJO_TEMPLATE_CLASS>
+
+La clase que el L<Mojolicious> "renderer" siempre debe usar para encontrar C<DATA> "templates",
+se convierte por defecto en C<main>.
+
+  MOJO_TEMPLATE_CLASS=MyApp
+
+=head2 C<MOJO_TMPDIR>
+
+Directorio para archivos temporales como archivos grandes, por defecto usando una 
+"platform specific" directorio temporal.
+
+  MOJO_TMPDIR=/tmp/mojo
+
+=head1 MORE
+
+Usted puede continuar con L<Mojolicious::Guides> ahora o echar un vistazo al
+Mojolicious wiki L<http://github.com/kraih/mojo/wiki>, que contiene una gran cantidad
+más documentación y ejemplos de diferentes autores.
+
+=cut

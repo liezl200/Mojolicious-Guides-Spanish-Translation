@@ -9,14 +9,14 @@ Este documento contiene un referencia concisa y para todo uso.
 
 =head1 RESERVED STASH VALUES
 
- Además de todo lo que contenga el prefijo,  C<mojo.>, hay algunos valores del stash que 
+Además de todo lo que contenga el prefijo,  C<mojo.>, hay algunos valores del stash que 
 son reservado para las rutas y el renderizador.
 
 =head2 C<action>
 
   $r->route('/welcome')->to(action => 'hello');
 
- Despachar a acción.
+Despachar a acción.
 
 =head2 C<app>
 
@@ -28,7 +28,7 @@ son reservado para las rutas y el renderizador.
 
   $r->route('/welcome')->to(cb => sub {...});
 
- Despachar a Callback.
+Despachar a Callback.
 
 =head2 C<class>
 
@@ -40,7 +40,7 @@ Alternativa camelizado de C<controller>.
 
   $r->route('/welcome')->to(controller => 'greetings');
 
- Despachar a controlador.
+Despachar a controlador.
 
 =head2 C<data>
 

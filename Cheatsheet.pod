@@ -286,7 +286,7 @@ razones de seguridad está desactivado por defecto.
 
 Habilitar el soporte de proxy inverso para su aplicación L<Mojolicious>.
 Esto permite L<Mojolicious> recoger por defecto el C<X-Forwarded-For>,
-C<X-Forwarded-Host> y C<X-Forwarded-HTTPS> en headers.
+C<X-Forwarded-Host> y C<X-Forwarded-HTTPS> en encabezados.
 
   MOJO_REVERSE_PROXY=1
 

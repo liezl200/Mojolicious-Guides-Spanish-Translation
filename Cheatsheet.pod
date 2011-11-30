@@ -129,7 +129,7 @@ Convertir caracteres en una respuesta.
 =head1 VARIABLES DE AMBIENTE
 
 Muchas partes de L<Mojolicious> pueden ser mejoradas con variables de ambiente.
-Las variables depuración de ambiente son excluidos porque son para uso
+Las variables de depuración de ambiente son excluidas porque son para uso
 exclusivo de desarollador. 
 
 
@@ -137,7 +137,7 @@ exclusivo de desarollador.
 
 Decide cual aplicación L<Mojolicious> o L<Mojo> se utilizará, siempre debe
 contener un nombre de clase como C<MyApp>. En general, es 
-por defecto a L<Mojo::HelloWorld>.
+por defecto L<Mojo::HelloWorld>.
 
   MOJO_APP=MyApp
 
@@ -150,7 +150,7 @@ L<IO::Socket::SSL> debe estar instalado para tener soporte de TLS.
 
 =head2 C<MOJO_CERT_FILE>
 
-La ruta al certificado TLS siempre debe contener una ruta como
+La ruta al certificado TLS. Siempre debe contener una ruta como
 C</etc/tls/client.crt>.
  L<IO::Socket::SSL> debe estar instalado para tener soporte de TLS.
 
@@ -158,15 +158,15 @@ C</etc/tls/client.crt>.
 
 =head2 C<MOJO_CHUNK_SIZE>
 
-Tamaño de pedazo usado para operaciones I/O, en bytes. Un chunk de tamaño más 
+Tamaño de pedazo usado para operaciones I/O, en bytes. Un pedazo de tamaño más 
 grande acelera operaciones I/O, pero utilizará más memoria. Es 
-por defecto en C<131072>.
+por defecto C<131072>.
 
   MOJO_CHUNK_SIZE=1024
 
 =head2 C<MOJO_CONFIG>
 
-Archivo configuración usado por L<Mojolicious::Plugin::Config> y
+Archivo de configuración usado por L<Mojolicious::Plugin::Config> y
 L<Mojolicious::Plugin::JSONConfig>, bastante conveniente para pruebas.
 
    MOJO_CONFIG=myapp.conf
@@ -180,7 +180,7 @@ una ruta como C</home/sri/myapp>.
 
 =head2 C<MOJO_IOWATCHER>
 
-Implementación alternativa de L<Mojo::IOWatcher> para intentar.
+Implementación alternativa de L<Mojo::IOWatcher> para probar.
 
   MOJO_IOWATCHER=Mojo::IOWatcher::EV
 
@@ -194,8 +194,8 @@ L<IO::Socket::SSL> debe estar instalado para tener soporte de TLS.
 
 =head2 C<MOJO_LOG_LEVEL>
 
-Nivel de logueo para el aplicación L<Mojolicious>, siempre debe contener un log
-level válido como C<debug> o C<error>.
+Nivel de logueo para el aplicación L<Mojolicious>, siempre debe contener un Nivel de logueo
+válido como C<debug> o C<error>.
 
   MOJO_LOG_LEVEL=debug
   MOJO_LOG_LEVEL=error
@@ -203,27 +203,27 @@ level válido como C<debug> o C<error>.
 =head2 C<MOJO_MAX_LEFTOVER_SIZE>
 
 Máximo tamaño, en bytes, del buffer para pedidos de HTTP por pipeline, es 
-por defecto en C<262144>.
+por defecto C<262144>.
 
   MOJO_MAX_LEFTOVER_SIZE=2048
 
 =head2 C<MOJO_MAX_LINE_SIZE>
 
-Máximo tamaño de linea para lineas de inicio y encabezados de un mensaje HTTP
-en bytes, es por defecto en  C<10240>.
+Máximo tamaño de linea para encabezados y lineas de inicio de un mensaje HTTP
+en bytes, es por defecto C<10240>.
 
   MOJO_MAX_LINE_SIZE=2048
 
 =head2 C<MOJO_MAX_MEMORY_SIZE>
 
 Máximo tamaño, en bytes, de contenido HTTP para mantener en la memoria. Contenido más grande se escribirá
-en archivos temporales, es por defecto en C<262144>.
+en archivos temporales, es por defecto C<262144>.
 
   MOJO_MAX_MEMORY_SIZE=2048
 
 =head2 C<MOJO_MAX_MESSAGE_SIZE>
 
-Máximo tamaño para mensajes de HTTP, en bytes, es por defecto en C<5242880>.
+Máximo tamaño para mensajes de HTTP, en bytes, es por defecto C<5242880>.
 
   MOJO_MAX_MESSAGE_SIZE=1024
 
@@ -231,11 +231,11 @@ Máximo tamaño para mensajes de HTTP, en bytes, es por defecto en C<5242880>.
 
   MOJO_MAX_REDIRECTS=3
 
-Máximo numero de redirecciones que L<Mojo::UserAgent> seguirá, es por defecto en C<0>.
+Máximo numero de redirecciones que L<Mojo::UserAgent> seguirá, es por defecto C<0>.
 
 =head2 C<MOJO_MAX_WEBSOCKET_SIZE>
 
-Máximo tamaño para mensajes de WebSocket, en bytes, es por defecto en C<262144>.
+Máximo tamaño para mensajes de WebSocket, en bytes, es por defecto C<262144>.
 
   MOJO_MAX_WEBSOCKET_SIZE=1024
 
@@ -292,21 +292,21 @@ C<X-Forwarded-Host> y C<X-Forwarded-HTTPS> en headers.
 
 =head2 C<MOJO_STATIC_CLASS>
 
-La clase que el despachador de archivos estaticos siempre debe usar para encontrar C<DATA>
-templates, es por defecto en C<main>.
+La clase que el despachador de archivos estaticos siempre debe usar para encontrar templates en
+C<DATA>, es por defecto C<main>.
 
   MOJO_STATIC_CLASS=MyApp
 
 =head2 C<MOJO_TEMPLATE_CLASS>
 
-La clase que el renderizador de L<Mojolicious> siempre debe usar para encontrar C<DATA> "templates",
-es por defecto en C<main>.
+La clase que el renderizador de L<Mojolicious> siempre debe usar para encontrar templates
+en C<DATA>, es por defecto C<main>.
 
   MOJO_TEMPLATE_CLASS=MyApp
 
 =head2 C<MOJO_TMPDIR>
 
-Directorio para archivos temporales como archivos grandes, por defecto usando 
+Directorio para archivos temporales, tales como archivos grandes, por defecto usando 
 un directorio temporal especifico a la plataforma.
 
   MOJO_TMPDIR=/tmp/mojo

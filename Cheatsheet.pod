@@ -94,7 +94,7 @@ Alternativa de C<action>.
 
   $r->route('/welcome')->to(namespace => 'TestApp', method => 'lulz');
 
-Despachar a "Namespace".
+Despachar a "Namespace" (espacio de nombres).
 
 =head2 C<partial>
 

@@ -194,7 +194,7 @@ L<IO::Socket::SSL> debe estar instalado para tener soporte de TLS.
 
 =head2 C<MOJO_LOG_LEVEL>
 
-Nivel de logueo para el aplicación L<Mojolicious>, siempre debe contener un Nivel de logueo
+Nivel de logueo para la aplicación L<Mojolicious>, siempre debe contener un Nivel de logueo
 válido como C<debug> o C<error>.
 
   MOJO_LOG_LEVEL=debug

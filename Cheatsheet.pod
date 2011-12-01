@@ -22,7 +22,7 @@ Despachar a acción.
 
   $r->route('/welcome')->to(app => MyApp->new);
 
- Despachar a aplicaciones embebidas.
+Despachar a aplicaciones embebidas.
 
 =head2 C<cb>
 
